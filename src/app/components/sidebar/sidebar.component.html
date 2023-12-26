@@ -1,0 +1,59 @@
+<div class="sidebar-container">
+    <div class="spotifyLogo flex flex-center">
+        <img src="../../../assets/images/Spotify_Logo_CMYK_Green.png" alt="Spotify Logo">
+    </div>
+    
+    <div class="menu-container flex options">
+        <app-sidebar-button [description]="'Home'"
+        [active]="activeMenu === 'Home'"
+        (click) = "handleClick('Home')"
+        >
+            <fa-icon [icon]="home"></fa-icon>    
+        </app-sidebar-button>
+
+        <app-sidebar-button [description]="'Search'"
+        [active]="activeMenu === 'Search'"
+        (click) = "handleClick('Search')"
+        >
+            <fa-icon [icon]="search"></fa-icon>
+        </app-sidebar-button>
+
+        <app-sidebar-button [description]="'Artists'"
+        [active]="activeMenu === 'Artists'"
+        (click) = "handleClick('Artists')"
+        >
+            <fa-icon [icon]="artists"></fa-icon>
+        </app-sidebar-button>
+    </div>
+
+    <div class="divisor"></div>
+
+    <div class="menu-container flex">
+        <span class="playlist-title">
+            Playlists
+        </span>
+
+        <div class="playlist-scroll">
+            <app-sidebar-button 
+            
+                *ngFor="let playlist of playlists"
+                [description]="playlist.name"
+                [active]="activeMenu === playlist.id"
+                (click)="handleClick(playlist.id)"
+                
+                >
+                <fa-icon [icon]="playlistIcon"></fa-icon>
+
+            </app-sidebar-button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="user">
+    <app-user-footer></app-user-footer>
+</div>
