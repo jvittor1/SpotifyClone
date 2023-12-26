@@ -1,0 +1,43 @@
+@import 'variables.scss';
+
+:host{
+    width: 100%;
+
+    button{
+        width: 100%;
+  
+        background-color: transparent;
+        color: $gray-color;
+        text-align: left;
+        border: none;
+        font-size: .9rem;
+        font-weight: 700;
+        cursor: pointer;
+
+        
+        &:hover{
+            color: $white-color;
+            
+        }
+
+
+        span{
+            width: 150px;
+            display: inline-block;
+            vertical-align: middle;
+            letter-spacing: 1px;
+            margin-left: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &.active{
+            color: $white-color;
+        }
+
+    }
+
+
+   
+}
