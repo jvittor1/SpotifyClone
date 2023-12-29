@@ -3,6 +3,7 @@ import { IUser } from "../interfaces/IUser";
 import { IAlbum } from "../interfaces/IAlbum";
 import { IArtist } from "../interfaces/IArtist";
 import { ITrack } from "../interfaces/ITrack";
+import { ICategory } from "../interfaces/ICategories";
 
 
 
@@ -64,4 +65,13 @@ export function setArtist(artist: SpotifyApi.ArtistObjectFull) : IArtist[] {
         name: artist.name,
         imgUrl: artist.images.shift()?.url || ''
     }];
+}
+
+
+export function setCategories(category: SpotifyApi.CategoryObject): ICategory[] {
+    return [{
+        id: category.id,
+        name: category.name,
+        img: category.icons.shift()?.url || ''
+    }]
 }

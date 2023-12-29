@@ -2,7 +2,7 @@ import { Injectable, inject} from "@angular/core";
 import { spotifyConfig } from "src/enviroments/enviroment.prod";
 import Spotify  from 'spotify-web-api-js'
 import { IUser } from "../interfaces/IUser";
-import { setArtist, setNewReleases, setPlaylists, setTracks, setUser } from "../common/spotifyHelper";
+import { setArtist, setCategories, setNewReleases, setPlaylists, setTracks, setUser } from "../common/spotifyHelper";
 import { userInitialize } from "../common/userInitialize";
 import { IPlaylist } from "../interfaces/IPlaylist";
 import { Router } from "@angular/router";
@@ -120,17 +120,13 @@ export class SpotifyService {
 
     async getTopTracks() {
         const topTracks = await this.spotifyApi?.getMyTopTracks({limit: 4});
-        console.log('topTracks: ',topTracks);
-        
         return topTracks?.items?.flatMap(track => setTracks(track as SpotifyApi.TrackObjectFull)) || [];
     }
 
 
     async getCategories() {
-        const categories = await this.spotifyApi?.getCategories();
-        console.log('categories: ',categories);
-        
-        return categories?.categories?.items || [];
+        const categories = await this.spotifyApi?.getCategories();        
+        return categories?.categories?.items?.flatMap(category => setCategories(category as SpotifyApi.CategoryObject)) || [];
     }
 
     async getTopArtists() {

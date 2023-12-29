@@ -1,0 +1,3 @@
+<div *ngFor="let category of categories; let i = index" class="mt-4">
+    <app-card-category [category]="category" [backgroundColor]="categoryBackgroundColors[i]"></app-card-category>
+</div>
