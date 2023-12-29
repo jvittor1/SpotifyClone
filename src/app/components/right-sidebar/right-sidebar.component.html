@@ -1,0 +1,17 @@
+<div class="mt-1 card">
+    <span class="title-md mt-3">Top Artists</span>
+    <div class="artists mt-2">
+        <div *ngFor="let artist of topArtists">
+            <app-artists-card [artist]="artist"></app-artists-card>
+        </div>
+    </div>
+
+    <span class="title-md mt-3">Related Artists</span>
+    <div class="artists mt-2">
+        <div *ngFor="let artist of relatedArtists">
+            <app-artists-card [artist]="artist"></app-artists-card>
+        </div>
+    </div>
+
+    
+</div>

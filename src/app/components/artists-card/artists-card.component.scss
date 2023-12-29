@@ -1,0 +1,36 @@
+@import "variables.scss";
+
+.artistCard {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px 4px 8px;
+  width: 100%;
+
+    .artistImage{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 20px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        
+    }
+
+    span{
+        color: $gray-color;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: .9rem;
+        width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
