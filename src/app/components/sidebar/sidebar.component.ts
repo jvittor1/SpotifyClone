@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { faGuitar, faHome, faMusic, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { IPlaylist } from 'src/app/interfaces/IPlaylist';
 import { SpotifyService } from 'src/app/services/spotify.service';
@@ -16,10 +17,10 @@ export class SidebarComponent {
 
   home = faHome
   search = faSearch
-  artists = faGuitar
-  playlistIcon = faMusic
 
-  constructor(private spotifyService : SpotifyService) { }
+  constructor(
+    private spotifyService : SpotifyService,
+    private router : Router) { }
 
 
   ngOnInit(): void {  
@@ -30,13 +31,12 @@ export class SidebarComponent {
 
   handleClick(menu: string) {
     this.activeMenu = menu;
+    this.router.navigate([`/player/${menu.toLowerCase()}`]);
   }
 
 
   async getPlaylists() {
     this.playlists = await this.spotifyService.getPlaylists();
-    console.log(this.playlists);
-    
     
   }
 

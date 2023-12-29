@@ -8,7 +8,10 @@
         [active]="activeMenu === 'Home'"
         (click) = "handleClick('Home')"
         >
+        <div>
             <fa-icon [icon]="home"></fa-icon>    
+
+        </div>
         </app-sidebar-button>
 
         <app-sidebar-button [description]="'Search'"
@@ -17,13 +20,7 @@
         >
             <fa-icon [icon]="search"></fa-icon>
         </app-sidebar-button>
-
-        <app-sidebar-button [description]="'Artists'"
-        [active]="activeMenu === 'Artists'"
-        (click) = "handleClick('Artists')"
-        >
-            <fa-icon [icon]="artists"></fa-icon>
-        </app-sidebar-button>
+        
     </div>
 
     <div class="divisor"></div>
@@ -42,9 +39,14 @@
                 (click)="handleClick(playlist.id)"
                 
                 >
-                <fa-icon [icon]="playlistIcon"></fa-icon>
+                <div
+                    class="playlistImage"
+                    [style.background-image]="'url(' + (playlist.imgUrl || '') + ')'"
+                >
+                </div>
 
             </app-sidebar-button>
+            
 
 
         </div>

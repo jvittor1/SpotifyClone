@@ -2,7 +2,7 @@ import { Injectable, inject} from "@angular/core";
 import { spotifyConfig } from "src/enviroments/enviroment.prod";
 import Spotify  from 'spotify-web-api-js'
 import { IUser } from "../interfaces/IUser";
-import { setPlaylists, setUser } from "../common/spotifyHelper";
+import { setArtist, setNewReleases, setPlaylists, setTracks, setUser } from "../common/spotifyHelper";
 import { userInitialize } from "../common/userInitialize";
 import { IPlaylist } from "../interfaces/IPlaylist";
 import { Router } from "@angular/router";
@@ -94,5 +94,68 @@ export class SpotifyService {
     }
 
 
+    async getNewReleases() {
+        const newReleases = await this.spotifyApi?.getNewReleases();     
+        return newReleases?.albums?.items.flatMap((item) => setNewReleases(item as SpotifyApi.AlbumObjectFull)) || [];
+        
+    }
     
+
+    // async getRecommendations() {
+    //     const top5Artists = await this.spotifyApi?.getMyTopArtists({ limit: 5 });
+    
+    //     const recommendations = await this.spotifyApi?.getRecommendations({ seed_artists: top5Artists?.items?.map(item => item.id) });
+
+    //     const tracks = recommendations?.tracks
+    //     return tracks?.flatMap(track => setTracks(track as SpotifyApi.TrackObjectFull))
+        
+    // }
+
+
+
+    async getRecentlyPlayed() {
+        const recentlyPlayed = await this.spotifyApi?.getMyRecentlyPlayedTracks({limit: 4});
+        return recentlyPlayed?.items?.flatMap(track => setTracks(track.track as SpotifyApi.TrackObjectFull)) || [];
+    }
+
+    async getTopTracks() {
+        const topTracks = await this.spotifyApi?.getMyTopTracks({limit: 4});
+        console.log('topTracks: ',topTracks);
+        
+        return topTracks?.items?.flatMap(track => setTracks(track as SpotifyApi.TrackObjectFull)) || [];
+    }
+
+
+    async getCategories() {
+        const categories = await this.spotifyApi?.getCategories();
+        console.log('categories: ',categories);
+        
+        return categories?.categories?.items || [];
+    }
+
+    async getTopArtists() {
+        const topArtists = await this.spotifyApi?.getMyTopArtists({limit: 5});
+        return topArtists?.items?.flatMap(artist => setArtist(artist as SpotifyApi.ArtistObjectFull)) || [];
+    }
+
+
+    
+    async getRelatedArtists(){
+        const topArtists = await this.spotifyApi?.getMyTopArtists({limit: 10});
+        
+        if (topArtists && topArtists.items && topArtists.items.length > 0) {
+            const randomIndex = Math.floor(Math.random() * topArtists.items.length);
+            const randomArtist = topArtists.items[randomIndex];
+
+            const relatedArtists = await this.spotifyApi?.getArtistRelatedArtists(randomArtist.id);
+
+
+            const limitedRelatedArtists = relatedArtists?.artists?.slice(0, 10) || [];
+
+            return limitedRelatedArtists.flatMap(artist => setArtist(artist as SpotifyApi.ArtistObjectFull)) || [];
+        }
+
+        return [];
+
+    }
 }

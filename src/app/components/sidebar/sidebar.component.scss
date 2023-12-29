@@ -2,14 +2,15 @@
 
 
 $h-spotify-logo: 160px;
-$h-menu-options: 100px;
+$h-menu-options: 80px;
 $m-menu-gap: 16px;
 $h-footer-user: 70px;
 
 $h-disconsider: calc($h-spotify-logo + $h-menu-options + $h-footer-user);
 
 :host{
-    width: 290px;
+    width: 300px;
+    min-width: 275px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -26,7 +27,7 @@ $h-disconsider: calc($h-spotify-logo + $h-menu-options + $h-footer-user);
 
         .spotifyLogo{
             width: $h-spotify-logo;
-            margin-bottom: 32px;
+            margin-bottom: 16px;
 
             img{
                 width: 70%;
@@ -45,11 +46,14 @@ $h-disconsider: calc($h-spotify-logo + $h-menu-options + $h-footer-user);
 
             &.options{
                 min-height: $h-menu-options;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
     
                 
-                *{
-                    margin-bottom: $m-menu-gap;
-                }
+                // *{
+                //     margin-bottom: $m-menu-gap;
+                // }
             }
         }
 
@@ -88,7 +92,20 @@ $h-disconsider: calc($h-spotify-logo + $h-menu-options + $h-footer-user);
             }
             
         
+            .playlistImage{
+                width: 50px;
+                height: 40px;
+                border-radius: 4px;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                cursor: pointer;
+            }
+        
+        
         }
+
+
 
     }
 
