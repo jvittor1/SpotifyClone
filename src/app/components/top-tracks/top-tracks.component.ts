@@ -17,27 +17,12 @@ export class TopTracksComponent {
 
   ngOnInit(): void {
     this.getRecommendations();
-    // this.getStuff();
-
   }
 
   async getRecommendations() {
-    this.tracks = await this.spotifyService.getTopTracks() || [];
-    console.log(this.tracks);
-    
+    this.tracks = await this.spotifyService.getTopTracks() || [];    
   }
     
-  // async getStuff() {
-  //   await this.spotifyService.getStuffs();
-    
-  // }
-
-  async getCategories() {
-    const categories = await this.spotifyService.getCategories();
-    console.log(categories);
-    
-  }
-
 }
 
 
