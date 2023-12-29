@@ -22,3 +22,50 @@ html, body {
     justify-content: center;
   }
 }
+
+.title{
+  color: $white-color;
+  display: block;
+  font-weight: 700;
+  
+  &-lg{
+    @extend .title;
+    font-size: 1.9rem;
+  }
+
+  &-bg{
+    @extend .title;
+    font-size: 1.5rem;
+  }
+
+  &-md{
+    @extend .title;
+    font-size: 1.25rem;
+  }
+
+  &-sm{
+    @extend .title;
+    font-size: 1rem;
+  }
+
+  &-xs{
+    @extend .title;
+    font-size: 0.75rem;
+  }
+
+}
+
+
+.mt{
+  @for $i from 1 to 10{
+    &-#{$i}{
+      margin-top: #{$i}vh;
+    }
+  } 
+}
+
+.card{
+  background-color: $secondary-color;
+  box-shadow: $box-shadow;
+  border-radius: 8px;
+}

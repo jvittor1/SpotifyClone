@@ -1,5 +1,10 @@
 import { IPlaylist } from "../interfaces/IPlaylist";
 import { IUser } from "../interfaces/IUser";
+import { IAlbum } from "../interfaces/IAlbum";
+import { IArtist } from "../interfaces/IArtist";
+import { ITrack } from "../interfaces/ITrack";
+
+
 
 export function setUser(user: SpotifyApi.CurrentUsersProfileResponse): IUser {
     return {
@@ -14,6 +19,49 @@ export function setPlaylists(playlist: SpotifyApi.PlaylistObjectSimplified): IPl
     return [{
         id: playlist.id,
         name: playlist.name,
-        imgUrl: playlist.images.pop()?.url || ''
+        imgUrl: playlist.images.shift()?.url || ''
+    }];
+}
+
+
+export function setNewReleases(album: SpotifyApi.AlbumObjectFull): IAlbum[] {
+    return [{
+        id: album.id,
+        name: album.name,
+        image: album.images.shift()?.url || '',
+        artists: album.artists.map((artist : SpotifyApi.ArtistObjectSimplified) => ({
+            id: artist.id,
+            name: artist.name
+        }))
+    }];
+}
+
+
+export function setTracks(track: SpotifyApi.TrackObjectFull): ITrack[]{
+    return [{
+        id: track.id,
+        name: track.name,
+        album: {
+            id: track.album.id,
+            name: track.album.name,
+            image: track.album.images.shift()?.url || '',
+            artists: (track.album as SpotifyApi.AlbumObjectFull).artists.map((artist : SpotifyApi.ArtistObjectSimplified) => ({
+                id: artist.id,
+                name: artist.name
+            }))
+        },
+        artists: track.artists.map((artist : SpotifyApi.ArtistObjectSimplified) => ({
+            id: artist.id,
+            name: artist.name
+        }))
+    }];
+}
+
+
+export function setArtist(artist: SpotifyApi.ArtistObjectFull) : IArtist[] {
+    return [{
+        id: artist.id,
+        name: artist.name,
+        imgUrl: artist.images.shift()?.url || ''
     }];
 }
