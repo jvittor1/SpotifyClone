@@ -14,6 +14,9 @@ import { TopTracksComponent } from 'src/app/components/top-tracks/top-tracks.com
 import { RecentlyPlayedComponent } from 'src/app/components/recently-played/recently-played.component';
 import { CardComponent } from 'src/app/components/card/card.component';
 import { ArtistsCardComponent } from 'src/app/components/artists-card/artists-card.component';
+import { SearchComponent } from 'src/app/components/search/search.component';
+import { CategoriesComponent } from 'src/app/components/categories/categories.component';
+import { CardCategoryComponent } from 'src/app/components/card-category/card-category.component';
 
 
 
@@ -30,7 +33,10 @@ import { ArtistsCardComponent } from 'src/app/components/artists-card/artists-ca
     TopTracksComponent,
     RecentlyPlayedComponent,
     CardComponent,
-    ArtistsCardComponent
+    ArtistsCardComponent,
+    SearchComponent,
+    CategoriesComponent,
+    CardCategoryComponent
 
     
   ],
