@@ -75,3 +75,25 @@ export function setCategories(category: SpotifyApi.CategoryObject): ICategory[] 
         img: category.icons.shift()?.url || ''
     }]
 }
+
+
+export function setAlbum(album: SpotifyApi.SingleAlbumResponse): ITrack[] {
+    return album.tracks.items.map((track : SpotifyApi.TrackObjectSimplified) => ({
+            id: track.id,
+            name: track.name,
+            album: {
+                id: album.id,
+                name: album.name,
+                image: album.images.shift()?.url || '',
+                artists: album.artists.map((artist : SpotifyApi.ArtistObjectSimplified) => ({
+                    id: artist.id,
+                    name: artist.name
+                }))
+            },
+            artists: track.artists.map((artist : SpotifyApi.ArtistObjectSimplified) => ({
+                id: artist.id,
+                name: artist.name
+            }))
+        }))
+};
+   

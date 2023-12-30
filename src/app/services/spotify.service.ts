@@ -2,7 +2,7 @@ import { Injectable, inject} from "@angular/core";
 import { spotifyConfig } from "src/enviroments/enviroment.prod";
 import Spotify  from 'spotify-web-api-js'
 import { IUser } from "../interfaces/IUser";
-import { setArtist, setCategories, setNewReleases, setPlaylists, setTracks, setUser } from "../common/spotifyHelper";
+import { setAlbum, setArtist, setCategories, setNewReleases, setPlaylists, setTracks, setUser } from "../common/spotifyHelper";
 import { userInitialize } from "../common/userInitialize";
 import { IPlaylist } from "../interfaces/IPlaylist";
 import { Router } from "@angular/router";
@@ -153,5 +153,49 @@ export class SpotifyService {
 
         return [];
 
+    }
+
+
+    async getTracksByPlaylistId(id: string) {
+        const tracks = await this.spotifyApi?.getPlaylistTracks(id);
+        return tracks?.items?.flatMap(track => setTracks(track.track as SpotifyApi.TrackObjectFull)) || [];
+    }
+
+    async getTracksByArtistId(id: string) {
+        const tracks = await this.spotifyApi?.getArtistTopTracks(id, 'BR');
+        return tracks?.tracks?.flatMap(track => setTracks(track as SpotifyApi.TrackObjectFull)) || [];
+    }
+
+
+    async getTrackByAlbumId(id: string) {
+        console.log(id);
+        
+        const album = await this.spotifyApi?.getAlbum(id)
+        return setAlbum(album as SpotifyApi.SingleAlbumResponse);
+        
+    
+    }
+
+    async getArtistById(id: string) {
+        const artist = await this.spotifyApi?.getArtist(id);
+        console.log(artist);
+        
+        return artist;
+    }
+
+
+    async getPlaylistById(id: string) {
+        const playlist = await this.spotifyApi?.getPlaylist(id);
+        console.log(playlist);
+        
+        return playlist;
+    }
+
+
+    async getAlbumById(id: string) {
+        const album = await this.spotifyApi?.getAlbum(id);
+        console.log(album);
+        
+        return album;
     }
 }
