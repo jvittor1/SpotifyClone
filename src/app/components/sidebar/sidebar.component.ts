@@ -39,6 +39,10 @@ export class SidebarComponent {
   }
 
 
+  navigateToPlaylistTracks(id: string) {
+    this.router.navigate([`/player/list/playlist/${id}`]);
+  }
+
   async getPlaylists() {
     this.playlists = await this.spotifyService.getPlaylists();
     
@@ -49,6 +53,7 @@ export class SidebarComponent {
     const activeMenu = this.activeRoute.snapshot.firstChild?.url[0].path;
     this.activeMenu = activeMenu ? activeMenu.charAt(0).toUpperCase() + activeMenu.slice(1) : '';
 
+    
   }
 
 

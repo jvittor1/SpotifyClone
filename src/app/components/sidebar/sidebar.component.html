@@ -36,7 +36,7 @@
                 *ngFor="let playlist of playlists"
                 [description]="playlist.name"
                 [active]="activeMenu === playlist.id"
-                (click)="handleClick(playlist.id)"
+                (click)="navigateToPlaylistTracks(playlist.id)"
                 
                 >
                 <div
