@@ -1,0 +1,15 @@
+<div [style.background]="getGradientBackground()" class="bannerCard mt-3">
+    <div
+        class="image"
+        [style.background-image]="'url(' + (imgUrl || '') + ')'"
+        [style.border-radius]="isArtist ? '50%' : '8px'"
+        >
+    </div>
+
+    <div class="text">
+        <span class="title-bg">{{title}}</span>
+        <p class="title-md">{{description}}</p>
+ 
+    </div>
+
+</div>
