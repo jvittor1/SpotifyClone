@@ -17,7 +17,8 @@ export class CardComponent {
 
   playIcon = faPlay;
 
-  navigateToTrack(id: string) {
-    this.route.navigate([`/player/list/album/${id}`]);
+  navigateToTrack(type: string, id: string) {
+    this.route.navigate([`/player/list/${type}/${id}`]);
   }
+
 }

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { generateRandomColor } from 'src/app/common/functionHelper';
 
 @Component({
   selector: 'app-banner',
@@ -11,18 +12,14 @@ export class BannerComponent {
   @Input() title: string = '';
   @Input() description: string = '';
   @Input() isArtist: boolean = false;
-  @Input() backgroundColor: string = '';
+
 
 
 
   constructor() { }
 
   ngOnInit(): void {
-  }
 
-
-  getGradientBackground(): string {
-    return `linear-gradient(to bottom, ${this.backgroundColor}, #0a0a0a)`;
   }
 
 }

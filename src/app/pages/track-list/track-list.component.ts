@@ -87,7 +87,8 @@ export class TrackListComponent {
     const { images, name, followers} = await this.spotifyService.getArtistById(id) || {};
     this.imgUrl = images?.shift()?.url || '';
     this.title = name || '';
-    this.description = followers?.total?.toString() + ' Followers' || '';
+    const followersCount = followers?.total || 0;
+    this.description = followersCount.toLocaleString() + ' Followers';
     this.isArtist = true;
 
   }
@@ -101,6 +102,13 @@ export class TrackListComponent {
     this.description = artists?.shift()?.name || '';
     this.isArtist = false;
   }
+
+
+
+  getGradientBackground(): string {
+    return `linear-gradient(to bottom, ${this.backgroundColor} 0%, ${this.backgroundColor} 0%, #0a0a0a 40%, #151515 100%)`;
+  }
+
 
     
   }
