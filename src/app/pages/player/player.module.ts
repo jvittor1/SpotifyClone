@@ -19,6 +19,7 @@ import { CategoriesComponent } from 'src/app/components/categories/categories.co
 import { CardCategoryComponent } from 'src/app/components/card-category/card-category.component';
 import { TrackListComponent } from '../track-list/track-list.component';
 import { BannerComponent } from 'src/app/components/banner/banner.component';
+import { TableComponent } from 'src/app/components/table/table.component';
 
 
 
@@ -40,7 +41,8 @@ import { BannerComponent } from 'src/app/components/banner/banner.component';
     CategoriesComponent,
     CardCategoryComponent,
     TrackListComponent,
-    BannerComponent
+    BannerComponent,
+    TableComponent
 
     
   ],

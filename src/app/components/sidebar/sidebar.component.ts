@@ -56,5 +56,8 @@ export class SidebarComponent {
     
   }
 
+  navigateToHome(){
+    this.router.navigate(['/player/home'])
+  }
 
 }

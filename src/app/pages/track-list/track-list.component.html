@@ -1,4 +1,5 @@
-<div [style.background]="getGradientBackground()" class="trackListContainer" >
-    <app-banner  [imgUrl]="imgUrl" [title]="title" [description]="description" [isArtist]="isArtist"></app-banner>
+<div class="trackListContainer" >
+    <app-banner  [imgUrl]="imgUrl" [title]="title" [description]="description" [isArtist]="isArtist" [backgroundColor]="backgroundColor"></app-banner>
 
+    <app-table [tracks]="tracks"></app-table>
 </div>

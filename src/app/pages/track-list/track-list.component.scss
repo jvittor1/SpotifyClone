@@ -5,9 +5,9 @@
     flex-direction: column;
     min-height: 100vh;
     height: 100vh;
-    
     width: 100%;
     padding: 12px;
+    
     
 
     .trackListContainer{
@@ -17,6 +17,7 @@
         flex-direction: column;
         border-radius: 10px;
         overflow-y: scroll;
+        background-color: $secondary-color;
 
         &::-webkit-scrollbar{
             display: none;

@@ -51,7 +51,9 @@ export class TrackListComponent {
   }
 
   async getPageData(type: string, id: string) {
+
     this.backgroundColor = generateRandomColor();
+
     if (type === 'playlist') {
       await this.getPlaylistTracks(id);
     }
@@ -102,13 +104,6 @@ export class TrackListComponent {
     this.description = artists?.shift()?.name || '';
     this.isArtist = false;
   }
-
-
-
-  getGradientBackground(): string {
-    return `linear-gradient(to bottom, ${this.backgroundColor} 0%, ${this.backgroundColor} 0%, #0a0a0a 40%, #151515 100%)`;
-  }
-
 
     
   }

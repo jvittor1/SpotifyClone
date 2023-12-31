@@ -28,7 +28,7 @@ $h-disconsider: calc($h-spotify-logo + $h-menu-options + $h-footer-user);
         .spotifyLogo{
             width: $h-spotify-logo;
             margin-bottom: 16px;
-
+            cursor: pointer;
             img{
                 width: 70%;
             }
