@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { generateRandomColor, stripHtmlTags } from 'src/app/common/functionHelper';
+import { generateRandomColor, getAllArtistsNames, stripHtmlTags } from 'src/app/common/functionHelper';
+import { IArtist } from 'src/app/interfaces/IArtist';
 import { ITrack } from 'src/app/interfaces/ITrack';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
@@ -101,11 +102,12 @@ export class TrackListComponent {
     const { images, name, artists } = await this.spotifyService.getAlbumById(id) || {};
     this.imgUrl = images?.shift()?.url || '';
     this.title = name || '';
-    this.description = artists?.shift()?.name || '';
+    this.description = getAllArtistsNames(artists as IArtist[]) || '';
     this.isArtist = false;
   }
 
-    
+  
+
   }
 
 

@@ -1,3 +1,5 @@
+import { IArtist } from "../interfaces/IArtist";
+
 export function stripHtmlTags(html: string): string {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || "";
@@ -17,4 +19,13 @@ export function msToTime(duration: number): string {
   const seconds = Math.floor((duration / 1000) % 60);
 
   return `${hours > 0 ? hours + ':' : ''}${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+}
+
+
+export function getAllArtistsNames(artists: IArtist[]): string {
+  if (artists && artists.length > 0) {
+      const artistNames = artists.map(artist => artist.name);
+      return artistNames.join(', ');
+  }
+  return '';
 }
