@@ -95,23 +95,11 @@ export class SpotifyService {
 
 
     async getNewReleases() {
-        const newReleases = await this.spotifyApi?.getNewReleases();     
+        const newReleases = await this.spotifyApi?.getNewReleases();  
         return newReleases?.albums?.items.flatMap((item) => setNewReleases(item as SpotifyApi.AlbumObjectFull)) || [];
         
     }
     
-
-    // async getRecommendations() {
-    //     const top5Artists = await this.spotifyApi?.getMyTopArtists({ limit: 5 });
-    
-    //     const recommendations = await this.spotifyApi?.getRecommendations({ seed_artists: top5Artists?.items?.map(item => item.id) });
-
-    //     const tracks = recommendations?.tracks
-    //     return tracks?.flatMap(track => setTracks(track as SpotifyApi.TrackObjectFull))
-        
-    // }
-
-
 
     async getRecentlyPlayed() {
         const recentlyPlayed = await this.spotifyApi?.getMyRecentlyPlayedTracks({limit: 4});
@@ -158,6 +146,8 @@ export class SpotifyService {
 
     async getTracksByPlaylistId(id: string) {
         const tracks = await this.spotifyApi?.getPlaylistTracks(id);
+        console.log(tracks);
+        
         return tracks?.items?.flatMap(track => setTracks(track.track as SpotifyApi.TrackObjectFull)) || [];
     }
 
@@ -168,9 +158,9 @@ export class SpotifyService {
 
 
     async getTrackByAlbumId(id: string) {
-        console.log(id);
-        
         const album = await this.spotifyApi?.getAlbum(id)
+        console.log(album);
+        
         return setAlbum(album as SpotifyApi.SingleAlbumResponse);
         
     

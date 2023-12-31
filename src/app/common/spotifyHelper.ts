@@ -4,6 +4,7 @@ import { IAlbum } from "../interfaces/IAlbum";
 import { IArtist } from "../interfaces/IArtist";
 import { ITrack } from "../interfaces/ITrack";
 import { ICategory } from "../interfaces/ICategories";
+import { msToTime } from "./functionHelper";
 
 
 
@@ -54,7 +55,8 @@ export function setTracks(track: SpotifyApi.TrackObjectFull): ITrack[]{
         artists: track.artists.map((artist : SpotifyApi.ArtistObjectSimplified) => ({
             id: artist.id,
             name: artist.name
-        }))
+        })),
+        time: track.duration_ms ? msToTime(track.duration_ms) : ''
     }];
 }
 
@@ -93,7 +95,8 @@ export function setAlbum(album: SpotifyApi.SingleAlbumResponse): ITrack[] {
             artists: track.artists.map((artist : SpotifyApi.ArtistObjectSimplified) => ({
                 id: artist.id,
                 name: artist.name
-            }))
+            })),
+            time: track.duration_ms ? msToTime(track.duration_ms) : ''
         }))
 };
    

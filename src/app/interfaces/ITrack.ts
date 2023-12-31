@@ -6,4 +6,5 @@ export interface ITrack {
     name: string;  
     album: IAlbum;
     artists: IArtist[];
+    time?: string;
 }

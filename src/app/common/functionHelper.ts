@@ -9,3 +9,12 @@ export function generateRandomColor(): string {
   const randomColorHex = randomColorNumber.toString(16).padStart(6, '0');
   return `#${randomColorHex}`;
 }
+
+
+export function msToTime(duration: number): string {
+  const minutes = Math.floor((duration / (1000 * 60)) % 60);
+  const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+  const seconds = Math.floor((duration / 1000) % 60);
+
+  return `${hours > 0 ? hours + ':' : ''}${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+}
