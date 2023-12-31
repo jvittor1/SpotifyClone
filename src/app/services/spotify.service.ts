@@ -188,4 +188,14 @@ export class SpotifyService {
         
         return album;
     }
+
+
+    async search(query: string) {
+        const search = await this.spotifyApi?.search(query, ['album', 'artist', 'playlist', 'track']);
+        // const searchByCategory = await this.spotifyApi?.getCategory(query);
+        // console.log(searchByCategory);
+        
+        return search;
+    }
+
 }
