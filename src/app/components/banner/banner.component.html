@@ -1,4 +1,4 @@
-<div class="bannerCard">
+<div [style.background]="getGradientBackground()" class="bannerCard">
     <div
         class="image"
         [style.background-image]="'url(' + (imgUrl || '') + ')'"
@@ -6,7 +6,7 @@
         >
     </div>
 
-    <div class="text mt-5">
+    <div class="text">
         <span class="title-bg">{{title}}</span>
         <p class="title-md">{{description}}</p>
  

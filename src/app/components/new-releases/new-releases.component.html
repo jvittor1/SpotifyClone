@@ -1,4 +1,4 @@
-<div class="mt-2 card">
+<div (click)="navigateToTrackList(randomNewReleases.id)" class="mt-2 card">
     <div class="artist flex">
         <span class="title-lg" *ngFor="let artist of randomNewReleases.artists; let last = last">
             {{ artist.name }}{{ !last ? ',' : '' }}
