@@ -1,0 +1,4 @@
+<div class="input mt-4">
+    <fa-icon class="searchIcon" [icon]="faSearch" (click)="navigateToSearchResults()"></fa-icon>
+    <input type="text" placeholder="What do you want to listen to?" [(ngModel)]="searchTerms" (keyup.enter)="navigateToSearchResults()">
+</div>

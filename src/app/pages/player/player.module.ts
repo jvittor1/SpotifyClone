@@ -20,7 +20,9 @@ import { CardCategoryComponent } from 'src/app/components/card-category/card-cat
 import { TrackListComponent } from '../track-list/track-list.component';
 import { BannerComponent } from 'src/app/components/banner/banner.component';
 import { TableComponent } from 'src/app/components/table/table.component';
-
+import { FormsModule } from '@angular/forms';
+import { InputComponent } from 'src/app/components/input/input.component';
+import { SearchResultsComponent } from '../search-results/search-results.component';
 
 
 
@@ -42,14 +44,17 @@ import { TableComponent } from 'src/app/components/table/table.component';
     CardCategoryComponent,
     TrackListComponent,
     BannerComponent,
-    TableComponent
+    TableComponent,
+    InputComponent,
+    SearchResultsComponent
 
     
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(playerRoutes),
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ]
 })
 export class PlayerModule { }

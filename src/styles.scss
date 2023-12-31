@@ -69,3 +69,14 @@ html, body {
   box-shadow: $box-shadow;
   border-radius: 8px;
 }
+
+.search-menu{
+  padding: 0 32px 20px 32px;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar{
+      display: none;
+  }
+}
