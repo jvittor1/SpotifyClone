@@ -1,19 +1,55 @@
-<div class="card">
+<div class="card"  (click)="navigateToTrack(type, id)">
   <div
-    (click)="navigateToTrack('album', track.album.id)"
-    class="image"
-    [style.background-image]="'url(' + (track.album.image || '') + ')'"
-  >
-    <fa-icon class="playIcon" [icon]="playIcon"></fa-icon>
-  </div>
+  class="image"
+  [style.background-image]="'url(' + (image || '') + ')'"
+  [ngStyle]="{
+    'border-radius': type === 'artist' ? '50%' : (type === 'playlist' ? '0' : '8px'),
+    'width': type === 'artist' ? '150px' : '100%',
+    'height': type === 'artist' ? '150px' : '100%'
+   
+  }"
+>
+  <fa-icon class="playIcon" [icon]="playIcon"></fa-icon>
+</div>
 
   <div class="mt-2">
-    <span class="title-sm">{{ track.name || "" }}</span>
+   
+    <ng-container *ngIf="type === 'playlist'">
+      <span class="title-sm">{{ name || "" }}</span>
+      <p class="title-xs" [style.pointer-events]="'none'">Playlist</p>
+    </ng-container>
 
-    <div (click)="navigateToTrack('artist', track.artists[0].id)">
-      <p class="title-xs" *ngIf="track.artists && track.artists.length > 0">
-        {{ track.artists[0].name || "" }}
-      </p>
-    </div>
+    <ng-container *ngIf="type === 'artist'">
+      <ng-container *ngFor="let artist of artists; let last = last">
+        <div>
+          <span class="title-sm">
+            {{ artist.name || "" }}
+            <ng-container *ngIf="!last">,</ng-container>
+          </span>
+          <p class="title-xs" [style.pointer-events]="'none'">Artist</p>
+        </div>
+      </ng-container>
+    </ng-container>
+    
+   
+    <ng-container *ngIf="type === 'album' || type === 'track'" >
+      <span class="title-sm">{{ name || "" }}</span>
+      <div class="flex" *ngIf="artists && artists.length > 0">
+        <ng-container *ngFor="let artist of artists; let last = last">
+          <div (click)="navigateToTrack('artist', artist.id)">
+            <p class="title-xs">
+              {{ artist.name || "" }}
+              <ng-container *ngIf="!last">,</ng-container>
+            </p>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+      
+    
+
+      
+
+
   </div>
 </div>

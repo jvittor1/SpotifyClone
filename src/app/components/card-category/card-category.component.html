@@ -1,4 +1,4 @@
-<div class="categoryCard" [style.background-color]="backgroundColor">
+<div class="categoryCard" [style.background-color]="backgroundColor" (click)="navigateToCategory(category.id)">
     <span class="title-md">{{category.name}}</span>
     
     <div

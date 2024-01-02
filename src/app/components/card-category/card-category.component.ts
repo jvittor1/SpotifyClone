@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { categoryInitialize } from 'src/app/common/categoryInitialize';
 import { ICategory } from 'src/app/interfaces/ICategories';
 
@@ -11,9 +12,14 @@ export class CardCategoryComponent {
   @Input() backgroundColor: string = '';
   @Input() category: ICategory = categoryInitialize();
   
-  constructor() { }
+  constructor(private router: Router) { }
   
    ngOnInit(): void {
 
   }
+
+  navigateToCategory(id: string){
+    this.router.navigate([`player/search/category/${id}`]);
+  }
+
 }

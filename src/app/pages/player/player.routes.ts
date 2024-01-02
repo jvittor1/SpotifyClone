@@ -20,7 +20,7 @@ export const playerRoutes: Routes = [
                 component: SearchComponent
             },
             {
-                path: 'search/results/:searchTerms',
+                path: 'search/:type/:searchTerms',
                 component: SearchResultsComponent
             },
 

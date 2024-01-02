@@ -1,4 +1,4 @@
 <div *ngFor="let track of recentlyPlayed" class="mt-2">
-    <app-card [track]="track"></app-card>
+    <app-card [id]="track.album.id" [image]="track.album.image" [artists]="track.artists" [name]="track.name" [type]="'album'"></app-card>
 </div>
 
