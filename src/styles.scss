@@ -80,3 +80,18 @@ html, body {
       display: none;
   }
 }
+
+
+.resultsContent{
+  display: flex;
+  flex-direction: column;
+  
+
+  .contentContainer{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+  }
+
+}

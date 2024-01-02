@@ -1,0 +1,8 @@
+<div class="resultsContent">
+    <span class="title-bg mt-4">Playlists</span>
+    <div class="contentContainer">
+        <div class="mt-2" *ngFor="let playlist of searchResultsByCategory">
+            <app-card [id]="playlist.id" [image]="playlist.imgUrl" [name]="playlist.name" [type]="'playlist'"></app-card>
+        </div>
+    </div>
+</div>

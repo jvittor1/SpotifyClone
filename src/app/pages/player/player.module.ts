@@ -23,6 +23,8 @@ import { TableComponent } from 'src/app/components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { InputComponent } from 'src/app/components/input/input.component';
 import { SearchResultsComponent } from '../search-results/search-results.component';
+import { ResultsBySearchComponent } from 'src/app/components/results-by-search/results-by-search.component';
+import { ResultsByCategoryComponent } from 'src/app/components/results-by-category/results-by-category.component';
 
 
 
@@ -46,7 +48,9 @@ import { SearchResultsComponent } from '../search-results/search-results.compone
     BannerComponent,
     TableComponent,
     InputComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    ResultsBySearchComponent,
+    ResultsByCategoryComponent
 
     
   ],

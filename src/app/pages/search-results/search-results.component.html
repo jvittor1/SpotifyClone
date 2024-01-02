@@ -1,5 +1,15 @@
 <div class="search-menu">   
     <app-input></app-input>
+    
+    <ng-container *ngIf="type === 'results'; else categoryBlock">
+        <app-results-by-search [searchResults]="searchResults"></app-results-by-search>
+      </ng-container>
       
+      <ng-template #categoryBlock>
+        <app-results-by-category [searchResultsByCategory]="searchResultsByCategory"></app-results-by-category>
+      </ng-template>
+      
+
+
 </div>
 

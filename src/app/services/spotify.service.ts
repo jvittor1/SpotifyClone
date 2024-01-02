@@ -2,7 +2,7 @@ import { Injectable, inject} from "@angular/core";
 import { spotifyConfig } from "src/enviroments/enviroment.prod";
 import Spotify  from 'spotify-web-api-js'
 import { IUser } from "../interfaces/IUser";
-import { setAlbum, setArtist, setCategories, setNewReleases, setPlaylists, setTracks, setUser } from "../common/spotifyHelper";
+import { SetSearchResults, setArtist, setCategories, setNewReleases, setPlaylists, setTrackByAlbum, setTracks, setUser } from "../common/spotifyHelper";
 import { userInitialize } from "../common/userInitialize";
 import { IPlaylist } from "../interfaces/IPlaylist";
 import { Router } from "@angular/router";
@@ -161,7 +161,7 @@ export class SpotifyService {
         const album = await this.spotifyApi?.getAlbum(id)
         console.log(album);
         
-        return setAlbum(album as SpotifyApi.SingleAlbumResponse);
+        return setTrackByAlbum(album as SpotifyApi.SingleAlbumResponse);
         
     
     }
@@ -191,11 +191,19 @@ export class SpotifyService {
 
 
     async search(query: string) {
-        const search = await this.spotifyApi?.search(query, ['album', 'artist', 'playlist', 'track']);
-        // const searchByCategory = await this.spotifyApi?.getCategory(query);
-        // console.log(searchByCategory);
-        
-        return search;
+        const search = await this.spotifyApi?.search(query, ['album', 'artist', 'playlist', 'track'], {limit: 4});   
+        console.log(search);
+           
+        return SetSearchResults(search as SpotifyApi.SearchResponse);
+    }
+
+
+    async searchByCategory(query: string) {
+        const search = await this.spotifyApi?.getCategoryPlaylists(query, {limit: 12});
+        return search?.playlists?.items?.flatMap(playlist => setPlaylists(playlist as SpotifyApi.PlaylistObjectSimplified)) || []
+      
     }
 
 }
+
+
