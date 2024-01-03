@@ -1,36 +1,30 @@
-<div class="sidebar-container">
-    <div (click)="navigateToHome()" class="spotifyLogo flex flex-center">
-        <img src="../../../assets/images/Spotify_Logo_CMYK_Green.png" alt="Spotify Logo">
-    </div>
+<div class="card sidebarHeader">
+    <app-sidebar-button [description]="'Home'"
+    [active]="activeMenu === 'Home'"
+    (click) = "handleClick('Home')"
+    >
+    <div>
+        <fa-icon [icon]="home"></fa-icon>    
     
-    <div class="menu-container flex options">
-        <app-sidebar-button [description]="'Home'"
-        [active]="activeMenu === 'Home'"
-        (click) = "handleClick('Home')"
-        >
-        <div>
-            <fa-icon [icon]="home"></fa-icon>    
-
-        </div>
-        </app-sidebar-button>
-
-        <app-sidebar-button [description]="'Search'"
-        [active]="activeMenu === 'Search'"
-        (click) = "handleClick('Search')"
-        >
-            <fa-icon [icon]="search"></fa-icon>
-        </app-sidebar-button>
-        
     </div>
+    </app-sidebar-button>
+    
+    <app-sidebar-button [description]="'Search'"
+    [active]="activeMenu === 'Search'"
+    (click) = "handleClick('Search')"
+    >
+        <fa-icon [icon]="search"></fa-icon>
+    </app-sidebar-button>
+</div>
 
-    <div class="divisor"></div>
+<div class="card sideBarContent">
+    <span class="libraryIcon">
+        <fa-icon class="icon" [icon]="library"></fa-icon> Your Library
+    </span>
 
-    <div class="menu-container flex">
-        <span class="playlist-title">
-            Playlists
-        </span>
-
-        <div class="playlist-scroll">
+    <div class="playlistUser">
+        
+        <div class="playlist-scroll mt-2">
             <app-sidebar-button 
             
                 *ngFor="let playlist of playlists"
@@ -44,18 +38,13 @@
                     [style.background-image]="'url(' + (playlist.imgUrl || '') + ')'"
                 >
                 </div>
-
             </app-sidebar-button>
             
-
-
         </div>
-
+        
+        <div class="user">
+            <app-user-footer></app-user-footer>
+        </div> 
     </div>
 
-</div>
-
-
-<div class="user">
-    <app-user-footer></app-user-footer>
 </div>

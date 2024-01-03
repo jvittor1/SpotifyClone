@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faGuitar, faHome, faMusic, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { IPlaylist } from 'src/app/interfaces/IPlaylist';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
@@ -18,6 +18,7 @@ export class SidebarComponent {
 
   home = faHome
   search = faSearch
+  library = faBook
 
   constructor(
     private spotifyService : SpotifyService,

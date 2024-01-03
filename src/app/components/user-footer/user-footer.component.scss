@@ -1,12 +1,10 @@
 @import 'variables.scss';
 
 div{
-    padding: 10px 32px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    border-top: 2px solid $background-color;
 
     img{
         flex-grow: 0;

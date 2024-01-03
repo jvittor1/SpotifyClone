@@ -1,12 +1,8 @@
 @import "variables.scss";
 
 
-$h-spotify-logo: 160px;
-$h-menu-options: 80px;
 $m-menu-gap: 16px;
-$h-footer-user: 70px;
-
-$h-disconsider: calc($h-spotify-logo + $h-menu-options + $h-footer-user);
+$h-disconsider: calc(220px);
 
 :host{
     width: 300px;
@@ -14,113 +10,84 @@ $h-disconsider: calc($h-spotify-logo + $h-menu-options + $h-footer-user);
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: $secondary-color;
-    box-shadow: $box-shadow;
+    padding: 12px;
+    gap: 8px;
 
-
-        
-    .sidebar-container{
-        flex-grow: 1;
-        height: 100%;
-        padding: 40px 40px 0 40px;
-        
-
-        .spotifyLogo{
-            width: $h-spotify-logo;
-            margin-bottom: 16px;
-            cursor: pointer;
-            img{
-                width: 70%;
-            }
-        }
-
-        .menu-container{
-            width: 100%;
-        
-
-            &.flex{
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-            }
-
-            &.options{
-                min-height: $h-menu-options;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-    
-                
-                // *{
-                //     margin-bottom: $m-menu-gap;
-                // }
-            }
-        }
-
-
-
-        .divisor{
-            width: 100%;
-            height: 1.5px;
-            background-color: $background-color;
-            margin: 4px 0 4px 0;
-        }
-
-
-        .playlist-title{
-            width: 100%;
-            margin: 10px 0 20px 0;
-            font-size: .67rem;
-            font-weight: 700;
-            color: $gray-color;
-            opacity: .8;
-            text-transform: uppercase;
-            
-            
-        }
-        
-        .playlist-scroll{
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: $m-menu-gap;
-            max-height: calc(95vh - $h-disconsider);
-            overflow-y: auto;
-            
-            &::-webkit-scrollbar{
-                display: none;
-            }
-            
-        
-            .playlistImage{
-                width: 50px;
-                height: 40px;
-                border-radius: 4px;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                cursor: pointer;
-            }
-        
-        
-        }
-
-
-
-    }
-
-
-
-    .user{
-        flex-grow: 0;
-        display: block;
-        height: $h-footer-user;
+    .sidebarHeader{
         width: 100%;
-
-     
-
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
     }
 
+    .sideBarContent{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        gap: 16px;
+        font-size: .9rem;
+        font-weight: 700;
+        color: $gray-color;
+
+        .libraryIcon{
+            // cursor: pointer;
+
+            .icon{
+                margin-right: 12px;
+            }
+            &:hover{
+                color: $white-color;
+            }
+        }
+        .playlistUser{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .playlist-scroll{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: $m-menu-gap;
+                    max-height: calc(95vh - $h-disconsider);
+                    overflow-y: auto;
+                    
+                    &::-webkit-scrollbar{
+                        display: none;
+                    }
+                    
+                
+                    .playlistImage{
+                        width: 50px;
+                        height: 40px;
+                        border-radius: 4px;
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        cursor: pointer;
+                    }
+                
+                
+                }
+
+                .user{
+                    flex-grow: 0;
+                    display: block;
+                    width: 100%;
+        
+            
+                }
+        }
+
+
+
+            
+    
+   
+    }
 }
-
-
