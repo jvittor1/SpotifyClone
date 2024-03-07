@@ -1,5 +1,4 @@
-# Projeto Clone do Spotify em Angular
-
+# Projeto Clone do Spotify
 Este é um projeto de clone do Spotify desenvolvido em Angular. Ele permite que os usuários visualizem seus artistas preferidos, suas faixas mais ouvidas, playlists favoritas e também realizem pesquisas de músicas e playlists.
 
 ## Instalação
