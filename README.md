@@ -1,27 +1,60 @@
-# SpotifyClone
+# Projeto Clone do Spotify em Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+Este é um projeto de clone do Spotify desenvolvido em Angular. Ele permite que os usuários visualizem seus artistas preferidos, suas faixas mais ouvidas, playlists favoritas e também realizem pesquisas de músicas e playlists.
 
-## Development server
+## Instalação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Clone este repositório:
+``` bash
+git clone https://github.com/jvittor1/SpotifyClone.git
+```
+2. Instale as dependências:
+```bash 
+npm install
+```
 
-## Code scaffolding
+## Configuração de Variáveis
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Antes de começar, você precisará realizar algumas etapas de configuração:
 
-## Build
+1. Faça login no [Spotify Developer Dashboard](https://developer.spotify.com/) e crie um novo aplicativo.
+2. Configure corretamente as variáveis de ambiente presentes nos arquivos `enviroments/enviroment.prod.ts` e `enviroments/enviroment.ts`. Insira as informações fornecidas pelo Spotify Developer Dashboard.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```typescript
+// enviroments/enviroment.prod.ts
+export const spotifyConfig = {
+    clientId: 'CLIENT_ID',
+    authEndpoint: 'AUTH_END_POINT',
+    redirectUri: 'REDIRECT_URL',
+};
+```
 
-## Running unit tests
+```typescript
+// enviroments/enviroment.ts
+export const spotifyConfig = {
+    clientId: 'CLIENT_ID',
+    authEndpoint: 'AUTH_END_POINT',
+    redirectUri: 'REDIRECT_URL',
+};
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Executando a Aplicação
+Execute o seguinte comando para iniciar a aplicação:
 
-## Running end-to-end tests
+```bash 
+ng serve
+```
+Acesse http://localhost:4200/ em seu navegador para visualizar o projeto.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Funcionalidades
 
-## Further help
+O projeto possui as seguintes funcionalidades:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Visualizar artistas preferidos.
+- Visualizar faixas mais ouvidas.
+- Visualizar playlists favoritas.
+- Pesquisar músicas e playlists.
+
+## Autores
+
+- [João Vitor](https://github.com/jvittor1)
